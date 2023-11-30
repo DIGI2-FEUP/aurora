@@ -9,3 +9,7 @@ Updated version of the original repository (30/11/2023)
 ### Installation Document
 
  - Document in Google Drive (SYSTEC-FoF/02.Projects/01.Finished/CiberToque/Info ShadowHand/Instalação_Software_Shadow.pdf)
+
+### Changes
+
+#### run-ansible.sh
