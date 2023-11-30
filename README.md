@@ -24,6 +24,6 @@ Revised: 30/11/2023
 ### - nvidia-container-toolkit.yml
 
  - File directory: `ansible/roles/installation/nvidia-docker/tasks/nvidia-container-toolkit.yml`
- - Line: `21` and `28`
+ - Lines: `21` and `28`
  - OLD: `ubuntu_version: "XX.04"`
  - NEW: `ubuntu_version: "18.04"`
