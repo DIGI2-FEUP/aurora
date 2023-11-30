@@ -60,7 +60,7 @@
         headers:
           Content-Type: application/json
           x-api-key: "{{ customer_key }}"
-      no_log: False # CHANGED HERE FROM True TO False
+      no_log: True
       register: request_result
 
     - name: Local Decryption
