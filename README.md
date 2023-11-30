@@ -14,6 +14,6 @@ Updated version of the original repository (30/11/2023)
 
 #### - run-ansible.sh
 
-Dir: `bin/run-ansible`
+Dir: `bin/run-ansible.sh`
 
 Line: 
