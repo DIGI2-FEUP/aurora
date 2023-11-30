@@ -235,7 +235,7 @@ pip3 install --user -U pip
 sudo chown $USER:$USER $aurora_home || true
 sudo rm -rf ${aurora_home}
 
-git clone --depth 1 -b main ${aurora_tools_branch} https://github.com/BrunoSantosCode/aurora.git $aurora_home
+git clone --depth 1 -b ${aurora_tools_branch} https://github.com/BrunoSantosCode/aurora.git $aurora_home
 
 echo ""
 echo " -------------------"
