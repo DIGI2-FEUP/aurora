@@ -38,7 +38,7 @@
   with_items:
     - nvidia-docker
 
-- name: Add libnvidia-container repository
+- name: Add libnvidia-container repository HERE
   apt_repository:
     repo: deb https://nvidia.github.io/{{ item }}/stable/ubuntu18.04/amd64 /
     state: present
