@@ -16,7 +16,14 @@ Revised: 30/11/2023
 
 ### - run-ansible.sh
 
- - Dir: `bin/run-ansible.sh`
- - Line: 238
+ - File directory: `bin/run-ansible.sh`
+ - Line: `238`
  - OLD: `git clone --depth 1 -b ${aurora_tools_branch} https://github.com/shadow-robot/aurora.git $aurora_home`
  - NEW: `git clone --depth 1 -b ${aurora_tools_branch} https://github.com/BrunoSantosCode/aurora.git $aurora_home`
+
+### - nvidia-container-toolkit.yml
+
+ - File directory: `ansible/roles/installation/nvidia-docker/tasks/nvidia-container-toolkit.yml`
+ - Line: `21` and `28`
+ - OLD: `ubuntu_version: "XX.04"`
+ - NEW: `ubuntu_version: "18.04"`
