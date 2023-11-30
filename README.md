@@ -16,4 +16,7 @@ Updated version of the original repository (30/11/2023)
 
 Dir: `bin/run-ansible.sh`
 
-Line: 
+Line: 238
+
+OLD: `git clone --depth 1 -b ${aurora_tools_branch} https://github.com/shadow-robot/aurora.git $aurora_home`
+NEW: `git clone --depth 1 -b ${aurora_tools_branch} https://github.com/BrunoSantosCode/aurora.git $aurora_home`
