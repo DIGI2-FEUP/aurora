@@ -9,6 +9,7 @@
     url: https://nvidia.github.io/nvidia-docker/gpgkey
     state: present
 
+# CHANGED ALL TO 18.04 (backwards compatable, 18.04 should work with up to at least 22.04)
 - name: Set ubuntu_version to 18.04 for nvidia-container-toolkit install
   set_fact:
     ubuntu_version: "18.04"
@@ -18,14 +19,14 @@
 
 - name: Set ubuntu_version to 20.04 for nvidia-container-toolkit install
   set_fact:
-    ubuntu_version: "20.04"
+    ubuntu_version: "18.04"
   when:
     - ansible_distribution|string == 'Ubuntu'
     - ansible_distribution_release|string == 'focal'
 
 - name: Set ubuntu_version to 22.04 for nvidia-container-toolkit install
   set_fact:
-    ubuntu_version: "22.04"
+    ubuntu_version: "18.04"
   when:
     - ansible_distribution|string == 'Ubuntu'
     - ansible_distribution_release|string == 'jammy'
