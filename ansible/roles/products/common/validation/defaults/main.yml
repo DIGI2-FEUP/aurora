@@ -1,0 +1,61 @@
+---
+playbook: ""
+boolean_variables:
+  - reinstall
+  - nvidia_docker
+  - real_glove
+  - real_vive
+  - use_aws
+  - use_openvpn
+  - terminator
+  - launch_hand
+  - use_steamvr
+  - sim_icon
+  - sim_hand
+  - save_nuc_logs
+  - demo_icons
+  - upgrade_check
+  - bimanual
+  - demohand_icons
+  - biotacs
+  - allow_auto_reboot
+  - client_use_steamvr
+  - desktop_icon
+  - optoforce
+  - router
+boolean_allowed_values:
+  - true
+  - false
+  - 'true'
+  - 'false'
+ip_regex: '^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$'
+glove_allowed_values:
+  - haptx
+  - shadow_glove
+ur_robot_type_allowed_values:
+  - ur10
+  - ur10e
+  - ur5
+  - ur5e
+hand_side_allowed_values:
+  - left
+  - right
+product_allowed_values:
+  - hand_e
+  - hand_lite
+  - hand_extra_lite
+  - arm_hand_e
+  - arm_hand_lite
+  - arm_hand_extra_lite
+  - glove_hand_e
+polhemus_type_allowed_values:
+  - liberty
+  - viper
+invalid_eth_values:
+  - eth01
+  - eth00
+  - enx0
+  - enx1
+  - enx2
+  - enx01
+  - enx00

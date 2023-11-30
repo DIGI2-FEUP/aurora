@@ -1,0 +1,12 @@
+---
+# QtCreator IDE installation
+
+- name: Update package lists
+  apt:
+    update_cache: yes
+  become: yes
+
+- name: Install QtCreator
+  apt:
+    name: "qtcreator"
+  become: yes

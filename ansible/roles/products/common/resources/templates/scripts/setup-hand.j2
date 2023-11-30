@@ -1,0 +1,31 @@
+#jinja2: trim_blocks:False
+#! /bin/bash
+source /home/user/projects/shadow_robot/base/devel/setup.bash
+/bin/update_hand_config.sh
+if {{ use_steamvr | lower }}; then
+    cd /home/user/.steam/bin && STEAM_RUNTIME=1 ./vrstartup.sh &> /dev/null 2>&1
+fi
+
+# move ssh key to ssh folder
+if [ -f /tmp/id_rsa ]; then
+    mv /tmp/id_rsa /home/user/.ssh/id_rsa
+fi
+if {{ launch_hand | lower }}; then
+    if {{ sim_hand | lower }}; then
+        roslaunch sr_robot_launch srhand.launch sim:=true
+    else
+        if {{ uses_autodetect | lower }}; then
+            sr_hand_autodetect {{ hand_side_ad }} roslaunch {{ launch_package_name }} {{ launch_file_name }} 2> >(tee -a /home/user/.ros/log/stderr.log >&2)
+        else
+            roslaunch {{ launch_package_name }} {{ launch_file_name }} 2> >(tee -a /home/user/.ros/log/stderr.log >&2)
+        fi
+    fi
+else
+    if {{ override_launch_hand | lower }}; then
+        if {{ uses_autodetect | lower }}; then
+            sr_hand_autodetect {{ hand_side_ad }} roslaunch {{ launch_package_name }} {{ launch_file_name }} 2> >(tee -a /home/user/.ros/log/stderr.log >&2)
+        else
+            roslaunch {{ launch_package_name }} {{ launch_file_name }} 2> >(tee -a /home/user/.ros/log/stderr.log >&2)
+        fi
+    fi
+fi

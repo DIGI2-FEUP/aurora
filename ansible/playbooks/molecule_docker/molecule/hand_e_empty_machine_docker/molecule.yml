@@ -1,0 +1,51 @@
+---
+driver:
+  name: docker
+lint: |
+  set -e
+  yamllint .
+  ansible-lint
+  flake8
+platforms:
+  - name: hand_e_empty_machine_docker
+    image: public.ecr.aws/shadowrobot/aurora-test-ubuntu-docker:focal
+    groups:
+      - docker_deploy
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:rw
+provisioner:
+  name: ansible
+  env:
+    ANSIBLE_ROLES_PATH: ../../../../roles
+    AWS_ACCESS_KEY: ${AWS_ACCESS_KEY:-default}
+    AWS_SECRET_KEY: ${AWS_SECRET_KEY:-default}
+  playbooks:
+    cleanup: cleanup.yml
+  inventory:
+    links:
+      group_vars: ../../../../inventory/local/group_vars
+verifier:
+  name: testinfra
+scenario:
+  create_sequence:
+    - create
+  check_sequence:
+    - destroy
+    - create
+    - converge
+    - check
+    - destroy
+  converge_sequence:
+    - create
+    - converge
+  destroy_sequence:
+    - destroy
+  test_sequence:
+    - lint
+    - destroy
+    - syntax
+    - create
+    - converge
+    - idempotence
+    - verify
+    - destroy

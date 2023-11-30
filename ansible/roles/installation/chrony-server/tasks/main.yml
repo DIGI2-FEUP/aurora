@@ -1,0 +1,40 @@
+---
+- name: Install chrony
+  apt:
+    name: chrony
+    state: present
+  become: yes
+
+- name: Set local chrony server address
+  lineinfile:
+    dest: /etc/chrony/chrony.conf
+    state: present
+    line: "server 127.127.1.0"
+  become: yes
+
+- name: Allow local network to use chrony
+  lineinfile:
+    dest: /etc/chrony/chrony.conf
+    state: present
+    line: "allow {{ chrony_allowed_network }}"
+  become: yes
+
+- name: Set chrony local stratum
+  lineinfile:
+    dest: /etc/chrony/chrony.conf
+    state: present
+    line: "local stratum 1"
+  become: yes
+
+- name: Restart chrony service
+  service:
+    name: chrony
+    state: restarted
+  become: yes
+  changed_when: false
+
+- name: Include installation/passwordless-command role
+  include_role:
+    name: installation/passwordless-command
+  vars:
+    passwordless_command: "/bin/systemctl restart chrony.service"

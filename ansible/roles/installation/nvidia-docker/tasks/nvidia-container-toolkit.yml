@@ -1,0 +1,64 @@
+---
+- name: Installing nvidia-modprobe
+  apt:
+    name: nvidia-modprobe
+    state: present
+
+- name: Install nvidia-docker gpg key
+  apt_key:
+    url: https://nvidia.github.io/nvidia-docker/gpgkey
+    state: present
+
+- name: Set ubuntu_version to 18.04 for nvidia-container-toolkit install
+  set_fact:
+    ubuntu_version: "18.04"
+  when:
+    - ansible_distribution|string == 'Ubuntu'
+    - ansible_distribution_release|string == 'bionic'
+
+- name: Set ubuntu_version to 20.04 for nvidia-container-toolkit install
+  set_fact:
+    ubuntu_version: "20.04"
+  when:
+    - ansible_distribution|string == 'Ubuntu'
+    - ansible_distribution_release|string == 'focal'
+
+- name: Set ubuntu_version to 22.04 for nvidia-container-toolkit install
+  set_fact:
+    ubuntu_version: "22.04"
+  when:
+    - ansible_distribution|string == 'Ubuntu'
+    - ansible_distribution_release|string == 'jammy'
+    
+- name: Add nvidia-docker repository
+  apt_repository:
+    repo: deb https://nvidia.github.io/{{ item }}/ubuntu{{ ubuntu_version }}/amd64 /
+    state: present
+  with_items:
+    - nvidia-docker
+
+- name: Add libnvidia-container repository
+  apt_repository:
+    repo: deb https://nvidia.github.io/{{ item }}/stable/ubuntu{{ ubuntu_version }}/amd64 /
+    state: present
+  with_items:
+    - libnvidia-container
+    - nvidia-container-runtime
+
+- name: Install nvidia-container-toolkit
+  apt:
+    name: nvidia-container-toolkit
+    state: present
+    update_cache: yes
+  changed_when: false
+
+- name: Reload daemon
+  systemd:
+    daemon_reload: yes
+  when: skip_molecule_task is not defined
+
+- name: Restart docker after installing nvidia-container-toolkit
+  service:
+    name: docker
+    state: restarted
+  changed_when: false

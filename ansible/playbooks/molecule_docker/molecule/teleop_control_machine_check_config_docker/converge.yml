@@ -1,0 +1,16 @@
+---
+- name: Teleop Nuc machine playbook for config check
+  import_playbook: ../../../teleop_deploy.yml
+  vars:
+    image: public.ecr.aws/shadowrobot/dexterous-hand
+    tag: noetic-release
+    reinstall: true
+    use_openvpn: false
+    nvidia_docker: false
+    allow_auto_reboot: true
+    bimanual: true
+    glove: haptx
+    ethercat_left_arm: enx0002
+    skip_molecule_task: true
+    ansible_become_password: ubuntu
+    ansible_ssh_pass: ubuntu

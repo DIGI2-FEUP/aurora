@@ -1,0 +1,7 @@
+---
+- name: Docker deploy playbook for non existing product
+  import_playbook: ../../../docker_deploy.yml
+  vars:
+    product: hand_e
+    allow_auto_reboot: true
+    skip_molecule_task: true

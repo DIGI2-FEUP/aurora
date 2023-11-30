@@ -1,0 +1,6 @@
+---
+container_name: "dexterous_hand"
+image: "public.ecr.aws/shadowrobot/dexterous-hand"
+tag: "noetic-release"
+skip_nvidia: false
+local_image: false

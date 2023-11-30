@@ -1,0 +1,25 @@
+#jinja2: trim_blocks:False
+#!/bin/bash
+
+CONST_TIMEOUT=20
+
+terminator --geometry "{{ term_1 }}" -T 'Launching server container...' -e "{{ shadow_hand_launcher_folder}}/shadow_server_container.sh"
+
+elapsed_time=0
+start_time=$SECONDS
+proceed=false
+while [ $elapsed_time -lt $CONST_TIMEOUT ]; do
+  elapsed_time=$(( SECONDS - start_time ))
+  if [ "$(docker ps -q -f name={{ container_name }})" ]; then
+    proceed=true
+    break;
+  fi
+done
+
+if [ "$proceed" == false ]; then
+    zenity --error --text="Teleop server container not running, execution stopped"
+    docker stop {{ container_name }}
+    exit 1
+fi
+
+terminator --geometry "{{ term_2 }}" -T 'Shadow Glove {{ glove_driver_value }} Calibration' -e "{{ shadow_hand_launcher_folder}}/shadow_glove_calibration_rqt.sh"

@@ -1,0 +1,34 @@
+---
+- name: Install Python 3
+  import_playbook: ./install_python3.yml
+
+- name: Install software based on external parameters
+  hosts: install_software
+  pre_tasks:
+
+    - name: Initialize list of software
+      set_fact:
+        software_list: "{{ software | default([]) }}"
+
+  roles:
+    - {role: installation/docker, when: "'docker' in software_list" }
+    - {role: installation/nvidia-docker, when: "'nvidia-docker' in software_list"}
+    - {role: installation/aws-cli-v2, when: "'aws-cli' in software_list"}
+    - {role: installation/pycharm, when: "'pycharm' in software_list"}
+    - {role: installation/qtcreator, when: "'qtcreator' in software_list"}
+    - {role: installation/vscode, when: "'vscode' in software_list"}
+    - {role: installation/steamvr, when: "'steamvr' in software_list"}
+    - {role: installation/libglvnd, when: "'libglvnd' in software_list"}
+    - {role: installation/terminator, when: "'terminator' in software_list"}
+    - {role: installation/lxml, when: "'lxml' in software_list"}
+    - {role: installation/net-tools, when: "'net-tools' in software_list"}
+    - {role: installation/shadow_glove_driver, when: "'shadow_glove_driver' in software_list"}
+    - {role: installation/passwordless-command, when: "'passwordless-command' in software_list"}
+    - {role: installation/rabbitvcs, when: "'rabbitvcs' in software_list"}
+    - {role: installation/prepareshadowvpn, when: "'prepareshadowvpn' in software_list"}
+    - {role: installation/resolvconf, when: "'resolvconf' in software_list"}
+    - {role: installation/mplabx, when: "'mplabx' in software_list"}
+    - {role: installation/chrome, when: "'chrome' in software_list"}
+    - {role: installation/mongodb, when: "'mongodb' in software_list"}
+    - {role: installation/warehouse_ros, when: "'warehouse_ros' in software_list"}
+    - {role: installation/production_tools, when: "'production_tools' in software_list"}

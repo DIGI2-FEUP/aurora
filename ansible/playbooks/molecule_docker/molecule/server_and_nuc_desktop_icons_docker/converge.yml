@@ -1,0 +1,13 @@
+---
+- name: Server_and_nuc playbook server desktop icons
+  import_playbook: ../../../server_and_nuc_deploy.yml
+  vars:
+    sudo_password: ubuntu
+    skip_molecule_task: true
+    allow_auto_reboot: true
+    reinstall: true
+    nvidia_docker: false
+    product: hand_e
+    upgrade_check: true
+    bimanual: true
+    customer_key: invalidkey

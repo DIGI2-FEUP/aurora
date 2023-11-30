@@ -1,0 +1,66 @@
+---
+
+- name: Install Docker dependencies
+  apt:
+    name: "{{ packages }}"
+    state: 'present'
+  vars:
+    packages:
+      - apt-transport-https
+      - ca-certificates
+      - software-properties-common
+
+- name: Add Docker repo apt key
+  apt_key:
+    url: 'https://download.docker.com/linux/ubuntu/gpg'
+    id: '9DC858229FC7DD38854AE2D88D81803C0EBFCD88'
+    state: 'present'
+
+- name: Add Docker repository
+  apt_repository:
+    repo: "{{ docker_apt_repository }}"
+    state: 'present'
+    update_cache: 'yes'
+
+- name: Install Docker
+  apt:
+    name: "{{ packages }}"
+    state: 'present'
+  vars:
+    packages:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+
+- name: Enable Docker systemd service
+  service:
+    name: 'docker'
+    state: 'started'
+    enabled: 'yes'
+  ignore_errors: yes
+
+- name: Add users to docker group
+  user:
+    name: "{{ user }}"
+    groups: 'docker'
+    append: 'yes'
+
+- name: Docker installation finished
+  debug:
+    msg: "Installation of Docker is finished. Please restart you computer and run the same installation tool again"
+
+- name: Rebooting computer to finish Docker installation
+  when: allow_auto_reboot|bool
+  async: 1
+  poll: 0
+  shell: sleep 5 && reboot
+
+- name: Waiting for remote host to come back after reboot
+  when: allow_auto_reboot|bool
+  wait_for_connection:
+    delay: '10'
+    timeout: '300'
+
+- name: Finishing Docker installation
+  when: not allow_auto_reboot|bool
+  meta: end_play
