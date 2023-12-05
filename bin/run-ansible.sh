@@ -96,8 +96,8 @@ export ANSIBLE_ROLES_PATH="${aurora_home}/ansible/roles"
 export ANSIBLE_CALLBACK_PLUGINS="/home/$USER/.ansible/plugins/callback:/usr/share/ansible/plugins/callback:${aurora_home}/ansible/playbooks/callback_plugins"
 export ANSIBLE_STDOUT_CALLBACK="custom_retry_runner"
 
-export ANSIBLE_GALAXY_SERVER_LIST='https://old-galaxy.ansible.com/'
-export ANSIBLE_GALAXY_COLLECTIONS_PATH=~/.ansible/collections:/usr/share/ansible/collections
+# Set the path to the Ansible configuration file
+export ANSIBLE_CONFIG="${aurora_home}/bin/ansible.cfg"
 
 # check for := (ROS style) variable assignments (just = should be used)
 extra_vars=$*
