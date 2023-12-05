@@ -28,6 +28,11 @@ Revised: 30/11/2023
                server = https://old-galaxy.ansible.com/
             ```
 
+```bash
+  npm install my-project
+  cd my-project
+```
+
 ### - nvidia-container-toolkit.yml
 
  - File path: `ansible/roles/installation/nvidia-docker/tasks/nvidia-container-toolkit.yml`
