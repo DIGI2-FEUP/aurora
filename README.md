@@ -14,14 +14,14 @@ Revised: 30/11/2023
 
 ## Changes
 
-### - run-ansible.sh
+### - run-ansible.sh [CHANGE]
 
  - File path: `bin/run-ansible.sh`
  - Line: `238`
  - OLD: `git clone --depth 1 -b ${aurora_tools_branch} https://github.com/shadow-robot/aurora.git $aurora_home`
  - NEW: `git clone --depth 1 -b ${aurora_tools_branch} https://github.com/BrunoSantosCode/aurora.git $aurora_home`
 
-## - Add configuration file (ansible.cfg)
+## - ansible.cfg [ADD]
  - File path: `bin/ansible.cfg`
  - Content:
 ```bash
@@ -29,7 +29,7 @@ Revised: 30/11/2023
    server = https://old-galaxy.ansible.com/
 ```
 
-### - nvidia-container-toolkit.yml
+### - nvidia-container-toolkit.yml [CHANGE]
 
  - File path: `ansible/roles/installation/nvidia-docker/tasks/nvidia-container-toolkit.yml`
  - Lines: `22` and `29`
