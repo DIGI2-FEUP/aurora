@@ -3,6 +3,9 @@
 set -e # fail on errors
 #set -x # echo commands run
 
+# Set Ansible Galaxy server URL
+export ANSIBLE_GALAXY_SERVER_LIST="https://old-galaxy.ansible.com/"
+
 script_name="bash <(curl -Ls bit.ly/run-aurora)"
 
 command_usage_message="Command usage: ${script_name} <playbook name> [--branch <name>] [--inventory <name>]"
