@@ -27,7 +27,7 @@ Revised: 30/11/2023
 ```bash
    [galaxy]  
    server = https://old-galaxy.ansible.com/
-``
+```
 
 ### - nvidia-container-toolkit.yml
 
