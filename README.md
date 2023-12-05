@@ -2,7 +2,7 @@
 
 Updated version of the original repository.
 
-Updated: 05/12/2023
+Last updated by Bruno Santos on 05/12/2023
 
 ## Original GitHub repository
 
