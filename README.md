@@ -17,7 +17,7 @@ Revised: 30/11/2023
 ### - run-ansible.sh [CHANGE]
 
  - File path: `bin/run-ansible.sh`
- - Line: `238`
+ - Line: `241`
  - OLD: `git clone --depth 1 -b ${aurora_tools_branch} https://github.com/shadow-robot/aurora.git $aurora_home`
  - NEW: `git clone --depth 1 -b ${aurora_tools_branch} https://github.com/DIGI2-FEUP/aurora.git $aurora_home`
 
