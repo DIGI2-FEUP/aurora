@@ -23,10 +23,10 @@ Revised: 30/11/2023
 
 ## - Add configuration file (ansible.cfg)
  - File path: `bin/ansible.cfg`
- - Content: ```[galaxy]
-
-               server = https://old-galaxy.ansible.com/```
-
+ - Content: ```bash
+               [galaxy]
+               server = https://old-galaxy.ansible.com/
+            ```
 
 ### - nvidia-container-toolkit.yml
 
