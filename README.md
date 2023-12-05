@@ -21,6 +21,11 @@ Revised: 30/11/2023
  - OLD: `git clone --depth 1 -b ${aurora_tools_branch} https://github.com/shadow-robot/aurora.git $aurora_home`
  - NEW: `git clone --depth 1 -b ${aurora_tools_branch} https://github.com/BrunoSantosCode/aurora.git $aurora_home`
 
+## - Add configuration file (ansible.cfg)
+ - File path: `bin/ansible.cfg`
+ - Content: `[galaxy]
+             server = https://old-galaxy.ansible.com/`
+
 ### - nvidia-container-toolkit.yml
 
  - File path: `ansible/roles/installation/nvidia-docker/tasks/nvidia-container-toolkit.yml`
