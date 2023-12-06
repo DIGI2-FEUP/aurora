@@ -20,7 +20,9 @@ Last updated by Bruno Santos (brunosantos@fe.up.pt) on 05/12/2023
  - Line: `241`
  - OLD: `git clone --depth 1 -b ${aurora_tools_branch} https://github.com/shadow-robot/aurora.git $aurora_home`
  - NEW: `git clone --depth 1 -b ${aurora_tools_branch} https://github.com/DIGI2-FEUP/aurora.git $aurora_home`
-
+ - Line: `100`
+ - ADD: `export ANSIBLE_CONFIG="${aurora_home}/bin/ansible.cfg"`
+ - 
 ### - ansible.cfg [ADD]
  - File path: `bin/ansible.cfg`
  - Content:
