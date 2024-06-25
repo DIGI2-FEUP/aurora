@@ -25,7 +25,7 @@
 
 - name: Get dhcp_interface_name
   set_fact:
-    dhcp_interface_name: "enx000ec67f525f"
+    dhcp_interface_name: "eth0"
 
 - name: Create network/interfaces
   become: true
