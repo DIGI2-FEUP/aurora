@@ -23,6 +23,10 @@
     state: present
   become: yes
 
+- name: Debug dhcp_interface_name
+  debug:
+    msg: "DHCP Interface Name: {{ hostvars[groups['dhcp'][0]]['ansible_interfaces'] | select('match','enx') | list | first }}"
+
 - name: Get dhcp_interface_name
   set_fact:
     dhcp_interface_name: "{{ hostvars[groups['dhcp'][0]]['ansible_interfaces'] | select('match','enx') | list | first }}"
